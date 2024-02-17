@@ -1,4 +1,4 @@
-package org.patchy.utils;
+package org.utils;
 public class OsFinder {
     String os;
 

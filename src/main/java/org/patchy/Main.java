@@ -1,6 +1,6 @@
 package org.patchy;
-import org.patchy.utils.Finder;
-import org.patchy.utils.OsFinder;
+import org.utils.Finder;
+import org.utils.OsFinder;
 
 import java.util.Scanner;
 
