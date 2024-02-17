@@ -15,13 +15,17 @@ public class Finder  {
 
     public static boolean validDir(String arg){
 
-        
-        if((arg.split("\\.").length != 2)){
-            String exe = arg.split("\\.")[1];            
-            if(exe.split("").length > 5) return false;
-            else return true;
+        if(arg.contains(".")){
+  
+            if((arg.split("\\.").length == 2)){
+                String exe = arg.split("\\.")[1];            
+                if(exe.split("").length < 5) return true;
+                else{
+                    System.out.println("File Exe is longder than 4");
+                    return false;
+                }
+            }
         }
-        
         return false; 
         
     }
@@ -33,9 +37,11 @@ public class Finder  {
         if(v == true){
     
         Path p = Paths.get(System.getProperty("user.dir"));
+    
         try {
-            Stream<Path> found = Files.find(p, 10, (c,basicFileAttributes) ->  c.getFileName().toString().equalsIgnoreCase(filename));
-            result = found.collect(Collectors.toList());
+        result = Files.find(p, 10, (f,a) ->  f.getFileName().toString().equals(filename)).toList();
+        
+            System.out.println(result);
         } catch (IOException e) {
            
             e.printStackTrace();
@@ -46,7 +52,7 @@ public class Finder  {
             System.out.println("Invalid File");
         }
 
-        
+      
 
         
 
